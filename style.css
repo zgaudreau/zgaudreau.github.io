@@ -33,6 +33,7 @@
 
   /* Layout */
   --max-width: 900px;
+  --max-width-prose: 680px;
 }
 
 /* ============================================================
@@ -64,6 +65,7 @@ body {
   font-size: var(--text-base);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4 {
@@ -317,7 +319,7 @@ a:hover { color: var(--color-accent); }
 }
 
 .article-body {
-  max-width: 680px;
+  max-width: var(--max-width-prose);
   padding: var(--space-md) 0;
 }
 
