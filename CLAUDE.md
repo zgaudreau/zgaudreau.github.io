@@ -2,13 +2,16 @@
 
 Personal site for Zack Gaudreau. Starting fresh — no legacy constraints.
 
-## Project
+## Deployment
 
 GitHub Pages site. Static output, deployed from the `master` branch root.
 
-## Stack
+## Tech Stack
 
-TBD — to be decided as the site takes shape. Document here once chosen.
+Use vanilla HTML, CSS, and JavaScript. Include all CSS and JavaScript inline in a single file unless otherwise specified.
+
+Fonts: Cormorant Garamond (display), Lora (body), Courier Prime (mono) — loaded from Google Fonts.
+Design tokens defined in `:root` at the top of `style.css`.
 
 ## Frontend Aesthetics
 
