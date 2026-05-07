@@ -1,68 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog &mdash; Zack Gaudreau</title>
-  <link rel="stylesheet" href="../style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-</head>
-<body class="page-blog">
+---
+layout: default
+page_class: page-blog
+title: Blog
+---
+<main>
+  <h2 style="font-style: italic; margin: var(--space-md) 0;">Blog</h2>
+  <hr class="rule">
 
-  <div class="container">
-
-    <header class="masthead">
-      <div class="masthead__top">
-        <a href="/">zgaudreau.com</a>
-        <span>vol. 1 &middot; 2026</span>
-      </div>
-      <hr class="rule rule--heavy">
-      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
-      <nav class="masthead__nav" id="main-nav">
-        <a href="/projects/">Projects</a>
-        <a href="/blog/" class="active">Blog</a>
-        <a href="/#about">About</a>
-      </nav>
-      <hr class="rule">
-    </header>
-
-    <main>
-      <h2 style="font-style: italic; margin: var(--space-md) 0;">Blog</h2>
-      <hr class="rule">
-
-      <article class="post-entry">
-        <p class="post-entry__date">May 2026</p>
-        <a href="#" class="post-entry__title">Post title goes here</a>
-        <span class="tag">3D Printing</span>
-        <p class="post-entry__excerpt">One sentence that captures what this post is about. Keep it brief.</p>
-      </article>
-      <hr class="rule">
-
-      <article class="post-entry">
-        <p class="post-entry__date">Apr 2026</p>
-        <a href="#" class="post-entry__title">Another post title</a>
-        <span class="tag">Woodworking</span>
-        <p class="post-entry__excerpt">One sentence that captures what this post is about. Keep it brief.</p>
-      </article>
-      <hr class="rule">
-
-      <article class="post-entry">
-        <p class="post-entry__date">Mar 2026</p>
-        <a href="#" class="post-entry__title">Third post title</a>
-        <span class="tag">AI</span>
-        <p class="post-entry__excerpt">One sentence that captures what this post is about. Keep it brief.</p>
-      </article>
-      <hr class="rule">
-    </main>
-
-    <footer class="footer">
-      <span>&copy; 2026 Zack Gaudreau</span>
-    </footer>
-
-  </div>
-
-  <script src="../js/main.js"></script>
-</body>
-</html>
+  {% for post in site.posts %}
+  <article class="post-entry">
+    <p class="post-entry__date">{{ post.date | date: "%B %Y" }}</p>
+    <a href="{{ post.url }}" class="post-entry__title">{{ post.title }}</a>
+    <span class="tag">{{ post.category | upcase }}</span>
+    <p class="post-entry__excerpt">{{ post.excerpt }}</p>
+  </article>
+  <hr class="rule">
+  {% else %}
+  <p style="color: var(--color-muted);">No posts yet.</p>
+  {% endfor %}
+</main>
