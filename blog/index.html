@@ -12,7 +12,7 @@ title: Blog
     <p class="post-entry__date">{{ post.date | date: "%B %Y" }}</p>
     <a href="{{ post.url }}" class="post-entry__title">{{ post.title }}</a>
     <span class="tag">{{ post.category | upcase }}</span>
-    <p class="post-entry__excerpt">{{ post.excerpt }}</p>
+    <p class="post-entry__excerpt">{{ post.excerpt | strip_html }}</p>
   </article>
   <hr class="rule">
   {% else %}
