@@ -17,7 +17,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const html = document.documentElement;
 
     function updateLabel() {
-      themeToggle.textContent = html.getAttribute('data-theme') === 'dark' ? 'LIGHT' : 'DARK';
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      themeToggle.textContent = isDark ? 'LIGHT' : 'DARK';
+      themeToggle.setAttribute('aria-pressed', String(isDark));
     }
 
     updateLabel();
