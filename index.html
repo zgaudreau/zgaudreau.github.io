@@ -1,85 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zack Gaudreau</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-</head>
-<body class="page-home">
+---
+layout: default
+page_class: page-home
+---
+<main>
+  <div class="editorial-grid">
 
-  <div class="container">
-
-    <header class="masthead">
-      <div class="masthead__top">
-        <a href="/">zgaudreau.com</a>
-        <span>vol. 1 &middot; 2026</span>
-      </div>
-      <hr class="rule rule--heavy">
-      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
-      <nav class="masthead__nav" id="main-nav">
-        <a href="/projects/">Projects</a>
-        <a href="/blog/">Blog</a>
-        <a href="#about">About</a>
-      </nav>
-      <hr class="rule">
-    </header>
-
-    <main>
-      <div class="editorial-grid">
-
-        <section aria-label="Featured project">
-          <span class="tag">3D Printing</span>
-          <h1 class="featured__title">Project Title Goes Here</h1>
-          <p class="featured__desc">A short description of the featured project goes here. Two or three sentences that give a sense of what it is and why it was worth building.</p>
-          <a href="/projects/" class="featured__link">View all projects &rarr;</a>
-        </section>
-
-        <aside aria-label="Recent posts and about">
-          <p class="section-label">Recent Posts</p>
-          <div class="recent-posts">
-            <article class="recent-post">
-              <span class="recent-post__date">May 2026</span>
-              <a href="/blog/" class="recent-post__title">Post title goes here</a>
-            </article>
-            <article class="recent-post">
-              <span class="recent-post__date">Apr 2026</span>
-              <a href="/blog/" class="recent-post__title">Another post title</a>
-            </article>
-            <article class="recent-post">
-              <span class="recent-post__date">Mar 2026</span>
-              <a href="/blog/" class="recent-post__title">Third post title</a>
-            </article>
-          </div>
-
-          <hr class="rule">
-
-          <p class="section-label">About</p>
-          <p class="about-blurb">I'm Zack — a maker and tinkerer. I build things with wood, plastic, and code. This is where I keep notes on what I'm working on.</p>
-          <a href="#about" class="featured__link">More about me &rarr;</a>
-        </aside>
-
-      </div>
-    </main>
-
-    <hr class="rule rule--heavy">
-
-    <section id="about" style="padding: var(--space-lg) 0;">
-      <h2>About</h2>
-      <p style="max-width: var(--max-width-prose); margin-top: var(--space-md); line-height: 1.8;">More about Zack goes here. Who you are, what you make, what this site is about. Written in first person, conversational tone. A few sentences is enough.</p>
+    {% assign featured = site.projects | where: "featured", true | first %}
+    {% if featured %}
+    <section aria-label="Featured project">
+      <span class="tag">{{ featured.category | upcase }}</span>
+      <h1 class="featured__title">{{ featured.title }}</h1>
+      <p class="featured__desc">{{ featured.description }}</p>
+      <a href="{{ featured.url }}" class="featured__link">Read more &rarr;</a>
     </section>
+    {% else %}
+    <section aria-label="Featured project">
+      <span class="tag">Projects</span>
+      <h1 class="featured__title">Nothing featured yet</h1>
+      <p class="featured__desc">Add <code>featured: true</code> to a project in <code>_projects/</code>.</p>
+      <a href="/projects/" class="featured__link">View all projects &rarr;</a>
+    </section>
+    {% endif %}
 
-    <hr class="rule">
+    <aside aria-label="Recent posts and about">
+      <p class="section-label">Recent Posts</p>
+      <div class="recent-posts">
+        {% for post in site.posts limit: 5 %}
+        <article class="recent-post">
+          <span class="recent-post__date">{{ post.date | date: "%b %Y" }}</span>
+          <a href="{{ post.url }}" class="recent-post__title">{{ post.title }}</a>
+        </article>
+        {% else %}
+        <p style="color: var(--color-muted); font-size: var(--text-sm);">No posts yet.</p>
+        {% endfor %}
+      </div>
 
-    <footer class="footer">
-      <span>&copy; 2026 Zack Gaudreau</span>
-    </footer>
+      <hr class="rule">
+
+      <p class="section-label">About</p>
+      <p class="about-blurb">I'm Zack &mdash; a maker and tinkerer. I build things with wood, plastic, and code. This is where I keep notes on what I'm working on.</p>
+      <a href="/#about" class="featured__link">More about me &rarr;</a>
+    </aside>
 
   </div>
+</main>
 
-  <script src="js/main.js"></script>
-</body>
-</html>
+<hr class="rule rule--heavy">
+
+<section id="about" style="padding: var(--space-lg) 0;">
+  <h2>About</h2>
+  <p style="max-width: var(--max-width-prose); margin-top: var(--space-md); line-height: 1.8;">More about Zack goes here. Who you are, what you make, what this site is about. Written in first person, conversational tone. A few sentences is enough.</p>
+</section>
