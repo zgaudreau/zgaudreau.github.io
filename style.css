@@ -36,6 +36,14 @@
   --max-width-prose: 680px;
 }
 
+[data-theme="dark"] {
+  --color-paper: #1c1917;
+  --color-ink:   #e8e3d8;
+  --color-accent: #e05242;
+  --color-rule:  #2d2a25;
+  --color-muted: #9a9183;
+}
+
 /* ============================================================
    RESET
    ============================================================ */
@@ -66,6 +74,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 h1, h2, h3, h4 {
@@ -155,6 +164,26 @@ a:hover { color: var(--color-accent); }
   color: var(--color-ink);
   padding: 2px 8px;
 }
+
+.masthead__right {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  padding: 0;
+}
+
+.theme-toggle:hover { color: var(--color-ink); }
 
 /* Editorial two-column grid (homepage) */
 .editorial-grid {
