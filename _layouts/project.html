@@ -1,0 +1,18 @@
+---
+layout: default
+---
+<main>
+  <header class="article-header">
+    <span class="tag">{{ page.category | upcase }}</span>
+    <h1 class="article-header__title">{{ page.title }}</h1>
+    <p class="article-header__meta">
+      <span class="section-label">{{ page.status | upcase }}</span>
+    </p>
+  </header>
+
+  <hr class="rule rule--heavy">
+
+  <div class="article-body">
+    {{ content }}
+  </div>
+</main>
