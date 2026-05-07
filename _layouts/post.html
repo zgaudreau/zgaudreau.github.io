@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<main>
+  <header class="article-header">
+    <span class="tag">{{ page.category | upcase }}</span>
+    <h1 class="article-header__title">{{ page.title }}</h1>
+    <p class="article-header__meta">{{ page.date | date: "%B %-d, %Y" }}</p>
+  </header>
+
+  <hr class="rule rule--heavy">
+
+  <div class="article-body">
+    {{ content }}
+  </div>
+
+  <hr class="rule">
+
+  <nav class="article-nav" aria-label="Post navigation">
+    {% if page.previous.url %}<a href="{{ page.previous.url }}">&larr; Previous</a>{% endif %}
+    {% if page.next.url %}<a href="{{ page.next.url }}">Next &rarr;</a>{% endif %}
+  </nav>
+</main>
