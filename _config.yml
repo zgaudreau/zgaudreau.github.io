@@ -1,0 +1,13 @@
+title: zgaudreau.com
+url: https://zgaudreau.com
+baseurl: ""
+permalink: /blog/:title/
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - docs/
+  - vendor/
