@@ -30,6 +30,7 @@ Deployed via GitHub Pages from the `master` branch root. Vanilla HTML/CSS/JS, no
 ## File Structure
 
 ```
+CNAME                       — contains "zgaudreau.com" for GitHub Pages custom domain
 index.html                  — homepage
 style.css                   — all styles
 js/
