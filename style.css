@@ -419,3 +419,7 @@ a:hover { color: var(--color-accent); }
 
   .masthead__nav.open { display: flex; }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  body { transition: none; }
+}
