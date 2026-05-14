@@ -392,6 +392,84 @@ a:hover { color: var(--color-accent); }
 /* Page-specific overrides scoped by body class if needed */
 
 /* ============================================================
+   GATE
+   ============================================================ */
+#gate {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--color-paper);
+  align-items: center;
+  justify-content: center;
+}
+
+[data-gated] #gate {
+  display: flex;
+}
+
+#gate h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  font-style: italic;
+  margin-bottom: var(--space-md);
+  color: var(--color-ink);
+}
+
+#gate form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+#gate input[type="password"] {
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  padding: 0.4em 0.75em;
+  border: 1px solid var(--color-rule);
+  background: transparent;
+  color: var(--color-ink);
+  letter-spacing: 0.15em;
+  text-align: center;
+  width: 14ch;
+  outline: none;
+}
+
+#gate input[type="password"]:focus {
+  border-color: var(--color-ink);
+}
+
+#gate button[type="submit"] {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  cursor: pointer;
+  padding: 0.25em 0;
+}
+
+#gate button[type="submit"]:hover {
+  color: var(--color-ink);
+}
+
+@keyframes gate-shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+
+#gate input.shake {
+  animation: gate-shake 0.35s ease;
+}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 640px) {
