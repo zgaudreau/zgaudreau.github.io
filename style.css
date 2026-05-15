@@ -408,65 +408,46 @@ a:hover { color: var(--color-accent); }
   display: flex;
 }
 
-#gate h1 {
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  font-weight: 600;
-  font-style: italic;
-  margin-bottom: var(--space-md);
-  color: var(--color-ink);
-}
-
-#gate form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-sm);
-}
-
-#gate input[type="password"] {
-  font-family: var(--font-mono);
-  font-size: var(--text-base);
-  padding: 0.4em 0.75em;
-  border: 1px solid var(--color-rule);
-  background: transparent;
-  color: var(--color-ink);
-  letter-spacing: 0.15em;
+.gate-message {
   text-align: center;
-  width: 14ch;
-  outline: none;
 }
 
-#gate input[type="password"]:focus {
-  border-color: var(--color-ink);
-}
-
-#gate button[type="submit"] {
+.gate-eyebrow {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  background: none;
-  border: none;
   color: var(--color-muted);
-  cursor: pointer;
-  padding: 0.25em 0;
+  margin-bottom: var(--space-md);
 }
 
-#gate button[type="submit"]:hover {
+.gate-message h1 {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 600;
+  font-style: italic;
   color: var(--color-ink);
+  margin-bottom: var(--space-sm);
 }
 
-@keyframes gate-shake {
-  0%, 100% { transform: translateX(0); }
-  20%       { transform: translateX(-6px); }
-  40%       { transform: translateX(6px); }
-  60%       { transform: translateX(-4px); }
-  80%       { transform: translateX(4px); }
+.gate-link {
+  display: inline-block;
+  margin-top: var(--space-lg);
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  background: #1a3a28;
+  border: 2px solid #c9a84c;
+  border-radius: 6px;
+  padding: 0.5em 1.25em;
 }
 
-#gate input.shake {
-  animation: gate-shake 0.35s ease;
+.gate-link:hover {
+  color: #e8c96e;
+  background: #2d5c3e;
+  border-color: #e8c96e;
 }
 
 /* ============================================================

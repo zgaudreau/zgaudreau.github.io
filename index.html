@@ -11,7 +11,7 @@ page_class: page-home
       <span class="tag">{{ featured.category | upcase }}</span>
       <h1 class="featured__title">{{ featured.title }}</h1>
       <p class="featured__desc">{{ featured.description }}</p>
-      <a href="{{ featured.url }}" class="featured__link">Read more &rarr;</a>
+      <a href="{{ featured.link | default: featured.url }}" class="featured__link">View project &rarr;</a>
     </section>
     {% else %}
     <section aria-label="Featured project">

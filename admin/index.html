@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Courier+Prime&display=swap" rel="stylesheet">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+      try {
+        if (localStorage.getItem('zgaudreau_auth')) {
+          window.location.replace('/');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <style>
+    :root {
+      --color-paper: #f5f0e8;
+      --color-ink: #1a1a1a;
+      --color-accent: #c0392b;
+      --color-rule: #d4cfc4;
+      --color-muted: #888;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-mono: 'Courier Prime', 'Courier New', monospace;
+    }
+    [data-theme="dark"] {
+      --color-paper: #1c1917;
+      --color-ink: #e8e3d8;
+      --color-accent: #e05242;
+      --color-rule: #2d2a25;
+      --color-muted: #9a9183;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body, h1, p { margin: 0; padding: 0; }
+    body {
+      background-color: var(--color-paper);
+      color: var(--color-ink);
+      font-family: var(--font-mono);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 600;
+      font-style: italic;
+      margin-bottom: 0.5rem;
+      color: var(--color-ink);
+    }
+    input[type="password"] {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      padding: 0.4em 0.75em;
+      border: 1px solid var(--color-rule);
+      background: transparent;
+      color: var(--color-ink);
+      letter-spacing: 0.15em;
+      text-align: center;
+      width: 14ch;
+      outline: none;
+    }
+    input[type="password"]:focus { border-color: var(--color-ink); }
+    button[type="submit"] {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: none;
+      border: none;
+      color: var(--color-muted);
+      cursor: pointer;
+      padding: 0.25em 0;
+    }
+    button[type="submit"]:hover { color: var(--color-ink); }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%       { transform: translateX(-6px); }
+      40%       { transform: translateX(6px); }
+      60%       { transform: translateX(-4px); }
+      80%       { transform: translateX(4px); }
+    }
+    input.shake { animation: shake 0.35s ease; }
+  </style>
+</head>
+<body>
+  <form id="gate-form">
+    <h1>password</h1>
+    <input type="password" id="gate-input" autocomplete="current-password" autofocus />
+    <button type="submit">enter</button>
+  </form>
+  <script>
+    const HASH = 'aeaa2cec33e27d65690e726e1710d3f4a99a2bf0ae9a3bd9087488f1dfb4d38d';
+    document.getElementById('gate-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const input = document.getElementById('gate-input');
+      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(input.value));
+      const hash = [...new Uint8Array(buf)].map(x => x.toString(16).padStart(2, '0')).join('');
+      if (hash === HASH) {
+        try { localStorage.setItem('zgaudreau_auth', '1'); } catch (_) {}
+        window.location.replace('/');
+      } else {
+        input.classList.add('shake');
+        input.addEventListener('animationend', function () {
+          input.classList.remove('shake');
+          input.value = '';
+          input.focus();
+        }, { once: true });
+      }
+    });
+  </script>
+</body>
+</html>
