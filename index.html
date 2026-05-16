@@ -11,7 +11,7 @@ page_class: page-home
       <span class="tag">{{ featured.category | upcase }}</span>
       <h1 class="featured__title">{{ featured.title }}</h1>
       <p class="featured__desc">{{ featured.description }}</p>
-      <a href="{{ featured.link | default: featured.url }}" class="featured__link">View project &rarr;</a>
+      <a href="{{ featured.url }}" class="featured__link">View project &rarr;</a>
     </section>
     {% else %}
     <section aria-label="Featured project">
@@ -38,7 +38,7 @@ page_class: page-home
       <hr class="rule">
 
       <p class="section-label">About</p>
-      <p class="about-blurb">I'm Zack &mdash; a maker and tinkerer. I build things with wood, plastic, and code. This is where I keep notes on what I'm working on.</p>
+      <p class="about-blurb">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
       <a href="/#about" class="featured__link">More about me &rarr;</a>
     </aside>
 
@@ -49,5 +49,5 @@ page_class: page-home
 
 <section id="about" style="padding: var(--space-lg) 0;">
   <h2>About</h2>
-  <p style="max-width: var(--max-width-prose); margin-top: var(--space-md); line-height: 1.8;">More about Zack goes here. Who you are, what you make, what this site is about. Written in first person, conversational tone. A few sentences is enough.</p>
+  <p style="max-width: var(--max-width-prose); margin-top: var(--space-md); line-height: 1.8;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 </section>
